@@ -1,0 +1,31 @@
+<main class="mini-url">
+  <div class="card">
+    <div class="brand">
+      <span class="brand-icon">🔗</span>
+      <h1>miniURL</h1>
+    </div>
+    <p class="subtitle">Encurte, compartilhe e acesse seus links favoritos.</p>
+
+    <form class="shortener" (submit)="$event.preventDefault()">
+      <input
+        class="url-input"
+        type="text"
+        placeholder="Cole aqui a URL que deseja encurtar"
+        aria-label="URL para encurtar"
+      />
+      <button class="shorten-btn" type="submit">Encurtar</button>
+    </form>
+
+    <div class="links">
+      @for (link of links; track link.shortPath) {
+        <a class="link-card" [href]="link.destination" target="_blank" rel="noopener">
+          <div class="link-info">
+            <span class="link-label">{{ link.label }}</span>
+            <span class="link-short">{{ link.shortPath }}</span>
+          </div>
+          <span class="link-arrow">→</span>
+        </a>
+      }
+    </div>
+  </div>
+</main>
